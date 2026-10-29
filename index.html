@@ -144,7 +144,18 @@
   #mobile-site{width:100%;max-width:100%;min-width:0;overflow-x:clip;padding-bottom:calc(7rem + env(safe-area-inset-bottom))}
   #mobile-site *{box-sizing:border-box;min-width:0}
   #mobile-site img,#mobile-site iframe,#mobile-site video,#mobile-site svg{max-width:100%}
-  #mobile-site main{width:100%;max-width:100vw;padding-left:max(14px,4.5vw);padding-right:max(14px,4.5vw)}
+  #mobile-site main{display:flex;flex-direction:column;row-gap:42px;width:100%;max-width:100vw;padding:92px max(16px,5vw) 28px}
+  #mobile-site main>section,#mobile-site main>footer{margin:0!important}
+  #mobile-site main>section>*{margin-top:0!important}
+  #mobile-site main>section{scroll-margin-top:82px}
+  #mobile-site main>section>h2,#mobile-site main>section>div>h2{margin-bottom:8px}
+  #mobile-site #mobile-hero{gap:18px}
+  #mobile-site #mobile-hero>.relative{height:250px}
+  #mobile-site #booking{padding:22px;gap:18px}
+  #mobile-site #services>div.space-y-3{display:flex;flex-direction:column;gap:16px}
+  #mobile-site #services>div.space-y-3>*{margin-top:0!important}
+  #mobile-site #transformations{gap:20px}
+  #mobile-site #doctor-mobile,#mobile-site #location-mobile{padding:18px;gap:18px}
   #mobile-site p,#mobile-site h1,#mobile-site h2,#mobile-site h3,#mobile-site label{overflow-wrap:anywhere}
   #mobile-site header.fixed{left:0;right:0;width:100%;padding-top:env(safe-area-inset-top)}
   #mobile-site header.fixed>div{gap:8px}
@@ -199,10 +210,6 @@
 <span class="inline-flex items-center gap-1.5 text-primary font-label-md">
 <span class="material-symbols-outlined text-primary text-[18px]">location_on</span>
           100 Feet Rd, Indiranagar, Bengaluru
-        </span>
-<span class="hidden md:inline-flex items-center gap-1.5 text-on-surface-variant font-label-md">
-<span class="material-symbols-outlined text-[18px]">schedule</span>
-          Mon - Sat: 9:00 AM - 8:30 PM | Sun: By Appt
         </span>
 </div>
 <div class="flex flex-nowrap items-center gap-3">
@@ -339,9 +346,6 @@
 <p class="text-label-sm font-label-sm text-outline">BDS, MDS • Senior Prosthodontist &amp; Implantologist</p>
 </div>
 </div>
-<span class="px-2.5 py-1 rounded-full bg-surface-container text-primary font-label-sm border border-outline-variant/30">
-                In-Clinic Today
-              </span>
 </div>
 </div>
 <!-- Floating Micro-Card -->
@@ -364,97 +368,27 @@
 <div class="bg-surface-container-low/60 rounded-2xl p-6 lg:p-10 border border-outline-variant/40 shadow-sm">
 <div class="max-w-3xl mb-8">
 <div class="inline-flex items-center gap-2 text-primary font-label-md mb-2">
-<span class="material-symbols-outlined text-[18px]">event_available</span>
-            Instant Clinic Availability
+<span class="material-symbols-outlined text-[18px]">chat</span>
+            Appointment request
           </div>
-<h2 class="text-headline-lg font-headline-lg text-on-surface">Reserve Your Dental Care Slot</h2>
-<p class="text-body-md font-body-md text-on-surface-variant">Select your dental concern, pick a preferred time, and receive instant confirmation with digital token directly on WhatsApp.</p>
+<h2 class="text-headline-lg font-headline-lg text-on-surface">How can we help?</h2>
+<p class="text-body-md font-body-md text-on-surface-variant">Share your name and the service you need. The clinic will confirm availability on WhatsApp.</p>
 </div>
-<form class="space-y-6" onsubmit="event.preventDefault(); alert('Appointment request submitted! Clinic reception will confirm on WhatsApp.');">
-<!-- Step 1: Select Dental Treatment -->
+<form class="grid grid-cols-1 gap-4 md:grid-cols-3" id="desktop-booking-form">
 <div>
-<label class="block text-label-md font-label-md text-on-surface mb-3">1. Select Reason for Visit / Treatment</label>
-<div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3">
-<label class="cursor-pointer">
-<input checked="" class="peer sr-only" name="treatment" type="radio" value="checkup"/>
-<div class="p-3 text-center rounded-xl bg-surface-container-lowest border border-outline-variant/60 peer-checked:border-primary peer-checked:bg-primary peer-checked:text-on-primary transition-all shadow-sm">
-<span class="material-symbols-outlined block text-[24px] mb-1 peer-checked:text-on-primary text-primary">stethoscope</span>
-<span class="text-label-sm font-label-sm block">Checkup &amp; Scaling</span>
+<label class="mb-1.5 block text-label-md font-label-md text-on-surface" for="desktop-patient-name">Your name</label>
+<input class="w-full rounded-xl border border-outline-variant/70 bg-white px-4 py-3 text-on-surface" id="desktop-patient-name" name="patientName" autocomplete="name" maxlength="80" placeholder="Enter your name" required/>
 </div>
-</label>
-<label class="cursor-pointer">
-<input class="peer sr-only" name="treatment" type="radio" value="rct"/>
-<div class="p-3 text-center rounded-xl bg-surface-container-lowest border border-outline-variant/60 peer-checked:border-primary peer-checked:bg-primary peer-checked:text-on-primary transition-all shadow-sm">
-<span class="material-symbols-outlined block text-[24px] mb-1 peer-checked:text-on-primary text-primary">healing</span>
-<span class="text-label-sm font-label-sm block">Painless RCT</span>
-</div>
-</label>
-<label class="cursor-pointer">
-<input class="peer sr-only" name="treatment" type="radio" value="aligners"/>
-<div class="p-3 text-center rounded-xl bg-surface-container-lowest border border-outline-variant/60 peer-checked:border-primary peer-checked:bg-primary peer-checked:text-on-primary transition-all shadow-sm">
-<span class="material-symbols-outlined block text-[24px] mb-1 peer-checked:text-on-primary text-primary">visibility</span>
-<span class="text-label-sm font-label-sm block">Clear Aligners</span>
-</div>
-</label>
-<label class="cursor-pointer">
-<input class="peer sr-only" name="treatment" type="radio" value="implant"/>
-<div class="p-3 text-center rounded-xl bg-surface-container-lowest border border-outline-variant/60 peer-checked:border-primary peer-checked:bg-primary peer-checked:text-on-primary transition-all shadow-sm">
-<span class="material-symbols-outlined block text-[24px] mb-1 peer-checked:text-on-primary text-primary">precision_manufacturing</span>
-<span class="text-label-sm font-label-sm block">Dental Implants</span>
-</div>
-</label>
-<label class="cursor-pointer">
-<input class="peer sr-only" name="treatment" type="radio" value="cosmetic"/>
-<div class="p-3 text-center rounded-xl bg-surface-container-lowest border border-outline-variant/60 peer-checked:border-primary peer-checked:bg-primary peer-checked:text-on-primary transition-all shadow-sm">
-<span class="material-symbols-outlined block text-[24px] mb-1 peer-checked:text-on-primary text-primary">sentiment_satisfied</span>
-<span class="text-label-sm font-label-sm block">Smile Makeover</span>
-</div>
-</label>
-<label class="cursor-pointer">
-<input class="peer sr-only" name="treatment" type="radio" value="pediatric"/>
-<div class="p-3 text-center rounded-xl bg-surface-container-lowest border border-outline-variant/60 peer-checked:border-primary peer-checked:bg-primary peer-checked:text-on-primary transition-all shadow-sm">
-<span class="material-symbols-outlined block text-[24px] mb-1 peer-checked:text-on-primary text-primary">child_care</span>
-<span class="text-label-sm font-label-sm block">Pediatric Care</span>
-</div>
-</label>
-</div>
-</div>
-<!-- Step 2: Date & Slot & Patient Details -->
-<div class="grid grid-cols-1 md:grid-cols-12 gap-4">
-<div class="md:col-span-3">
-<label class="block text-label-md font-label-md text-on-surface mb-1.5">Date of Appointment</label>
-<input class="w-full px-3.5 py-3 rounded-xl bg-surface-container-lowest border border-outline-variant/70 text-on-surface text-body-sm font-body-sm focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none" required="" type="date"/>
-</div>
-<div class="md:col-span-3">
-<label class="block text-label-md font-label-md text-on-surface mb-1.5">Preferred Slot</label>
-<select class="w-full px-3.5 py-3 rounded-xl bg-surface-container-lowest border border-outline-variant/70 text-on-surface text-body-sm font-body-sm focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none">
-<option value="morning">Morning (09:30 AM - 01:00 PM)</option>
-<option value="afternoon">Afternoon (02:00 PM - 05:00 PM)</option>
-<option selected="" value="evening">Evening (05:30 PM - 08:30 PM)</option>
+<div>
+<label class="mb-1.5 block text-label-md font-label-md text-on-surface" for="desktop-service">Service</label>
+<select class="w-full rounded-xl border border-outline-variant/70 bg-white px-4 py-3 text-on-surface" id="desktop-service" name="service" required>
+<option value="" selected disabled>Select a service</option>
+<option>Checkup &amp; consultation</option><option>Cleaning &amp; scaling</option><option>Root canal treatment</option><option>Dental implants</option><option>Clear aligners</option><option>Smile makeover</option><option>Paediatric dentistry</option><option>Other dental concern</option>
 </select>
 </div>
-<div class="md:col-span-3">
-<label class="block text-label-md font-label-md text-on-surface mb-1.5">Patient Name</label>
-<input class="w-full px-3.5 py-3 rounded-xl bg-surface-container-lowest border border-outline-variant/70 text-on-surface text-body-sm font-body-sm focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none" placeholder="e.g. Ramesh Kumar" required="" type="text"/>
-</div>
-<div class="md:col-span-3">
-<label class="block text-label-md font-label-md text-on-surface mb-1.5">WhatsApp Mobile (+91)</label>
-<div class="flex items-center rounded-xl bg-surface-container-lowest border border-outline-variant/70 overflow-hidden focus-within:border-primary focus-within:ring-2 focus-within:ring-primary/20">
-<span class="px-3 text-body-sm text-outline-variant border-r border-outline-variant/50">+91</span>
-<input class="w-full px-3 py-3 border-none text-on-surface text-body-sm font-body-sm focus:ring-0 outline-none" pattern="[0-9]{10}" placeholder="98765 43210" required="" type="tel"/>
-</div>
-</div>
-</div>
-<!-- Step 3: Action & Transparency Disclaimer -->
-<div class="flex flex-col sm:flex-row items-center justify-between gap-4 pt-2">
-<div class="flex items-center gap-2 text-label-sm font-label-sm text-on-surface-variant">
-<span class="material-symbols-outlined text-[18px] text-primary" style="font-variation-settings: 'FILL' 1;">lock</span>
-              Zero spam guarantee. Consultation fee of ₹500 is payable directly at clinic desk after your examination.
-            </div>
-<button class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-xl bg-primary hover:bg-primary-container text-on-primary font-label-lg transition-all duration-200 shadow-sm active:scale-[0.98]" type="submit">
-<span class="material-symbols-outlined text-[20px]">send</span>
-              Confirm Slot via WhatsApp
-            </button>
+<div class="flex flex-col justify-end gap-2">
+<button class="inline-flex min-h-12 items-center justify-center gap-2 rounded-xl bg-primary px-6 py-3 font-semibold text-on-primary" type="submit"><span class="material-symbols-outlined">chat</span>Continue on WhatsApp</button>
+<p class="text-center text-xs text-on-surface-variant">WhatsApp opens a message draft for you to review before sending.</p>
 </div>
 </form>
 </div>
@@ -1001,14 +935,6 @@
 </div>
 </div>
 <div class="flex items-start gap-3">
-<span class="material-symbols-outlined text-primary text-[22px] mt-0.5">schedule</span>
-<div>
-<strong class="text-on-surface block font-label-lg">Consultation Timings</strong>
-                  Monday – Saturday: 9:00 AM – 8:30 PM<br/>
-                  Sunday: 10:00 AM – 2:00 PM (Emergency &amp; Pre-booked Implants only)
-                </div>
-</div>
-<div class="flex items-start gap-3">
 <span class="material-symbols-outlined text-primary text-[22px] mt-0.5">local_parking</span>
 <div>
 <strong class="text-on-surface block font-label-lg">Valet Parking &amp; Metro Connectivity</strong>
@@ -1031,13 +957,6 @@
 <!-- Visual Map Preview Embed -->
 <div class="lg:col-span-6 bg-surface-container rounded-2xl overflow-hidden border border-outline-variant/40 shadow-sm relative min-h-[350px]">
 <img class="w-full h-full object-cover" data-alt="A clean modern digital map overview card focusing on Indiranagar 100 Feet Road neighborhood in Bengaluru Karnataka with crisp landmark pins and transit route indicators rendered in clean light mode medical aesthetic." data-location="Bengaluru" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCCgSg3gOMdHczIa7B6Ebw3yRDODv_z1mUVX72M1gm9xL9XttU5NMmcI0U-6OJtjRVMoXM3fHGqwPB1zoronIs49AdXTI18vBoHVCailUkNUILhZFGQBvqnpF1qmNMKFB9Es3kjCbGjId-tSjvDnkdfau97h3gceaec9ROgj7v9zl2m9YkEVxop0zd-7ZwqNrEQ12S6EInnpIRj8bAVuPSgLtJmk6CT2ODeW_o1kIw"/>
-<div class="absolute top-4 right-4 bg-surface-container-lowest/90 backdrop-blur-md px-4 py-2.5 rounded-xl border border-outline-variant/40 shadow-sm">
-<div class="flex items-center gap-2 text-primary font-label-md">
-<span class="material-symbols-outlined text-[18px]">verified</span>
-              Clinic Open Now
-            </div>
-<div class="text-label-sm font-label-sm text-outline">Walk-ins welcomed till 8:00 PM</div>
-</div>
 </div>
 </div>
 </div>
@@ -1076,10 +995,6 @@
 <div><a class="text-on-surface-variant hover:text-primary transition-colors" href="#location">Visit Us</a></div>
 <div><a class="text-on-surface-variant hover:text-primary transition-colors" href="#insurance">Insurance &amp; EMI Partners</a></div>
 <div><a class="text-on-surface-variant hover:text-primary transition-colors" href="#privacy">Privacy Policy</a></div>
-<div class="pt-2 text-label-sm font-label-sm text-error flex items-center gap-1.5">
-<span class="material-symbols-outlined text-[16px]">e911_emergency</span>
-              After-hours Dental Trauma &amp; Swelling: Call (080) 4123 4567
-            </div>
 </div>
 </div>
 </div>
@@ -1175,155 +1090,48 @@
 <!-- Main Content Canvas (Mobile-first Layout) -->
 <main class="pt-20 px-margin-sm space-y-8">
 <!-- Hero Section -->
-<section class="space-y-4">
-<!-- High-Trust Accreditation & Verified Badge -->
-<div class="inline-flex items-center gap-2 bg-surface-container-lowest px-3 py-1.5 rounded-full border border-outline-variant/60 shadow-sm">
-<span class="flex h-2 w-2 rounded-full bg-secondary"></span>
-<span class="font-label-md text-label-md text-on-surface">Dr. Aarav Mehta (BDS, MDS) • 15+ Yrs</span>
-<span class="text-primary font-label-md text-label-md font-semibold">★ 4.9 (1.2k Google)</span>
+<section class="space-y-4" id="mobile-hero">
+<div class="relative h-56 rounded-2xl overflow-hidden bg-surface-container-high shadow-sm">
+<img class="w-full h-full object-cover" data-alt="Dental care team in a bright clinic" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA9yVFtRtO7uPEiPQV9dD8MWynvzdo5aS_LPg2D422iyJnOqvyalPJT99RzHSSpYZG7Zc_s2mEzVqCy-PejEMPreW3UpYjfI8cArX9Mb8eFCe4fS_yMPG0mLuJNF8psd3JuQZAASERnN0k12RJMuW2l1LqAAPtz6UZGVKB17-oO0E6GxhSQEI2SMz6mPLDW_RdMtxfnXpmfLmuCYvXi3xZT09EIcwuVqKOEa72VzU8"/>
+<div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/75 to-transparent p-4 pt-12 text-white">
+<p class="font-label-sm font-semibold tracking-wide">SMILE-N-STYLE · KURLA WEST</p>
+<p class="text-xl font-semibold">Dental care for your smile</p>
 </div>
-<!-- Hero Headline & Reassurance -->
+</div>
+<div class="flex items-center gap-2 text-sm font-semibold text-primary">
+<span aria-hidden="true">★</span><span>317 Google reviews</span><span class="text-outline">· Dental clinic</span>
+</div>
 <div class="space-y-2">
-<h1 class="font-headline-xl-mobile text-headline-xl-mobile text-on-surface tracking-tight">
-          Painless, Precision Dentistry for the <span class="text-primary">Whole Family</span>
-</h1>
-<p class="font-body-md text-body-md text-on-surface-variant">
-          Experience boutique cosmetic, microscopic endodontics, and Swiss implantology with empathetic clinical mastery in Indiranagar.
-        </p>
+<h1 class="text-3xl font-bold leading-tight tracking-tight text-on-surface">A healthier smile starts here.</h1>
+<p class="text-base leading-relaxed text-on-surface-variant">Visit SMILE-N-STYLE in Kurla West, Mumbai.</p>
 </div>
-<!-- Trust Badges Grid -->
-<div class="grid grid-cols-2 gap-2">
-<div class="bg-surface-container-lowest p-3 rounded-lg border border-outline-variant/60 shadow-sm flex items-center gap-2.5">
-<div class="p-2 bg-primary-container/10 rounded-full text-primary">
-<span class="material-symbols-outlined text-xl" data-icon="verified" style="font-variation-settings: 'FILL' 1;">verified</span>
-</div>
-<div>
-<p class="font-headline-sm text-headline-sm font-bold text-on-surface">10,000+</p>
-<p class="font-label-sm text-label-sm text-on-surface-variant">Painless RCTs Done</p>
-</div>
-</div>
-<div class="bg-surface-container-lowest p-3 rounded-lg border border-outline-variant/60 shadow-sm flex items-center gap-2.5">
-<div class="p-2 bg-secondary-container/30 rounded-full text-secondary">
-<span class="material-symbols-outlined text-xl" data-icon="medical_information">medical_information</span>
-</div>
-<div>
-<p class="font-headline-sm text-headline-sm font-bold text-on-surface">100% IDA</p>
-<p class="font-label-sm text-label-sm text-on-surface-variant">Certified Protocol</p>
-</div>
-</div>
-</div>
-<!-- Doctor Preview Hero Card -->
-<div class="relative overflow-hidden bg-surface-container-lowest rounded-xl border border-outline-variant/60 shadow-sm p-3 flex items-center gap-3">
-<img class="w-20 h-20 rounded-lg object-cover flex-shrink-0" data-alt="Warm and reassuring portrait of an experienced Indian male dentist in his late thirties, wearing pristine clinical teal scrubs with a stethoscope, smiling gently against a state of the art minimalist dental clinic backdrop with soft daylight and high-key clinical illumination." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA9yVFtRtO7uPEiPQV9dD8MWynvzdo5aS_LPg2D422iyJnOqvyalPJT99RzHSSpYZG7Zc_s2mEzVqCy-PejEMPreW3UpYjfI8cArX9Mb8eFCe4fS_yMPG0mLuJNF8psd3JuQZAASERnN0k12RJMuW2l1LqAAPtz6UZGVKB17-oO0E6GxhSQEI2SMz6mPLDW_RdMtxfnXpmfLmuCYvXi3xZT09EIcwuVqKOEa72VzU8"/>
-<div class="flex-1 min-w-0">
-<div class="flex items-center gap-1">
-<h3 class="font-headline-sm text-headline-sm font-semibold truncate text-on-surface">Dr. Aarav Mehta</h3>
-<span class="material-symbols-outlined text-primary text-base" data-icon="check_circle" style="font-variation-settings: 'FILL' 1;">check_circle</span>
-</div>
-<p class="font-label-md text-label-md text-on-surface-variant">Chief Implantologist &amp; Prosthodontist</p>
-<div class="mt-1 flex items-center gap-2">
-<span class="text-tertiary font-label-sm text-label-sm font-medium">Next: Today 4:30 PM</span>
-</div>
-</div>
+<div class="grid grid-cols-2 gap-3">
+<a class="flex min-h-12 items-center justify-center gap-2 rounded-xl bg-primary px-4 py-3 text-center font-semibold text-on-primary" href="#booking"><span class="material-symbols-outlined">calendar_month</span>Book a visit</a>
+<a class="flex min-h-12 items-center justify-center gap-2 rounded-xl border border-primary bg-white px-4 py-3 text-center font-semibold text-primary" href="https://wa.me/919820985271"><span class="material-symbols-outlined">chat</span>WhatsApp</a>
 </div>
 </section>
-<!-- Quick Booking / WhatsApp Token Scheduling Card -->
-<section class="bg-surface-container-lowest rounded-xl border border-outline-variant/60 shadow-sm p-4 space-y-4" id="booking">
-<div class="flex items-center justify-between border-b border-outline-variant/40 pb-2.5">
+<!-- Simple WhatsApp booking form -->
+<section class="rounded-2xl border border-outline-variant/60 bg-surface-container-lowest p-5 shadow-sm space-y-4" id="booking">
 <div>
-<span class="font-label-sm text-label-sm font-semibold text-primary">INSTANT TOKEN RESERVATION</span>
-<h2 class="font-headline-md text-headline-md text-on-surface">Book Your Slot</h2>
+<span class="font-label-sm font-semibold uppercase tracking-wide text-primary">Appointment request</span>
+<h2 class="mt-1 text-2xl font-bold text-on-surface">How can we help?</h2>
+<p class="mt-1 text-sm text-on-surface-variant">Share your name and the service you need. The clinic will confirm availability on WhatsApp.</p>
 </div>
-<span class="px-2.5 py-1 bg-surface-container rounded-full font-label-sm text-label-sm text-on-surface">Zero Wait Time</span>
+<form class="space-y-4" id="mobile-booking-form">
+<div>
+<label class="mb-1.5 block text-sm font-semibold text-on-surface" for="mobile-patient-name">Your name</label>
+<input class="w-full rounded-xl border border-outline-variant/70 bg-white px-4 py-3 text-base text-on-surface" id="mobile-patient-name" name="patientName" autocomplete="name" maxlength="80" placeholder="Enter your name" required/>
 </div>
-<!-- Step 1: Select Dental Need (Horizontal Touch Scroll) -->
-<div class="space-y-1.5">
-<label class="font-label-md text-label-md text-on-surface-variant">1. Choose Treatment / Concern</label>
-<div class="flex gap-2 overflow-x-auto no-scrollbar py-1" id="treatmentPillGroup">
-<button class="treatment-pill px-3 py-2 rounded-lg font-label-md text-label-md whitespace-nowrap bg-primary text-on-primary shadow-sm flex items-center gap-1.5 flex-shrink-0" onclick="selectPill(this, 'treatment')" type="button">
-<span class="material-symbols-outlined text-base">check</span>
-            Checkup &amp; Consultation
-          </button>
-<button class="treatment-pill px-3 py-2 rounded-lg font-label-md text-label-md whitespace-nowrap bg-surface-container-lowest border border-outline-variant/80 text-on-surface hover:bg-surface-container-low flex items-center gap-1.5 flex-shrink-0" onclick="selectPill(this, 'treatment')" type="button">
-            Painless RCT
-          </button>
-<button class="treatment-pill px-3 py-2 rounded-lg font-label-md text-label-md whitespace-nowrap bg-surface-container-lowest border border-outline-variant/80 text-on-surface hover:bg-surface-container-low flex items-center gap-1.5 flex-shrink-0" onclick="selectPill(this, 'treatment')" type="button">
-            Clear Aligners
-          </button>
-<button class="treatment-pill px-3 py-2 rounded-lg font-label-md text-label-md whitespace-nowrap bg-surface-container-lowest border border-outline-variant/80 text-on-surface hover:bg-surface-container-low flex items-center gap-1.5 flex-shrink-0" onclick="selectPill(this, 'treatment')" type="button">
-            Dental Implants
-          </button>
-<button class="treatment-pill px-3 py-2 rounded-lg font-label-md text-label-md whitespace-nowrap bg-surface-container-lowest border border-outline-variant/80 text-on-surface hover:bg-surface-container-low flex items-center gap-1.5 flex-shrink-0" onclick="selectPill(this, 'treatment')" type="button">
-            Smile Makeover
-          </button>
-<button class="treatment-pill px-3 py-2 rounded-lg font-label-md text-label-md whitespace-nowrap bg-surface-container-lowest border border-outline-variant/80 text-on-surface hover:bg-surface-container-low flex items-center gap-1.5 flex-shrink-0" onclick="selectPill(this, 'treatment')" type="button">
-            Pediatric Care
-          </button>
+<div>
+<label class="mb-1.5 block text-sm font-semibold text-on-surface" for="mobile-service">Service</label>
+<select class="w-full rounded-xl border border-outline-variant/70 bg-white px-4 py-3 text-base text-on-surface" id="mobile-service" name="service" required>
+<option value="" selected disabled>Select a service</option>
+<option>Checkup &amp; consultation</option><option>Cleaning &amp; scaling</option><option>Root canal treatment</option><option>Dental implants</option><option>Clear aligners</option><option>Smile makeover</option><option>Paediatric dentistry</option><option>Other dental concern</option>
+</select>
 </div>
-</div>
-<!-- Step 2: Date Selector (Horizontal Date Strip) -->
-<div class="space-y-1.5">
-<label class="font-label-md text-label-md text-on-surface-variant">2. Preferred Date</label>
-<div class="grid grid-cols-4 gap-2 text-center" id="datePillGroup">
-<button class="date-pill p-2 rounded-lg border-2 border-primary bg-primary/5" onclick="selectDate(this)" type="button">
-<span class="block font-label-sm text-label-sm text-primary font-semibold">TODAY</span>
-<span class="block font-headline-sm text-headline-sm font-bold text-on-surface">24</span>
-<span class="block font-label-sm text-label-sm text-on-surface-variant">Oct</span>
-</button>
-<button class="date-pill p-2 rounded-lg border border-outline-variant/60 bg-surface-container-lowest" onclick="selectDate(this)" type="button">
-<span class="block font-label-sm text-label-sm text-on-surface-variant">FRI</span>
-<span class="block font-headline-sm text-headline-sm font-semibold text-on-surface">25</span>
-<span class="block font-label-sm text-label-sm text-on-surface-variant">Oct</span>
-</button>
-<button class="date-pill p-2 rounded-lg border border-outline-variant/60 bg-surface-container-lowest" onclick="selectDate(this)" type="button">
-<span class="block font-label-sm text-label-sm text-on-surface-variant">SAT</span>
-<span class="block font-headline-sm text-headline-sm font-semibold text-on-surface">26</span>
-<span class="block font-label-sm text-label-sm text-on-surface-variant">Oct</span>
-</button>
-<button class="date-pill p-2 rounded-lg border border-outline-variant/60 bg-surface-container-lowest" onclick="selectDate(this)" type="button">
-<span class="block font-label-sm text-label-sm text-on-surface-variant">SUN</span>
-<span class="block font-headline-sm text-headline-sm font-semibold text-on-surface">27</span>
-<span class="block font-label-sm text-label-sm text-on-surface-variant">Oct</span>
-</button>
-</div>
-</div>
-<!-- Step 3: Real-Time Time Slot Selector -->
-<div class="space-y-1.5">
-<div class="flex items-center justify-between">
-<label class="font-label-md text-label-md text-on-surface-variant">3. Available Slots (Dr. Mehta)</label>
-<span class="font-label-sm text-label-sm text-primary flex items-center gap-1">
-<span class="w-1.5 h-1.5 rounded-full bg-primary animate-ping"></span> Live Availability
-          </span>
-</div>
-<div class="grid grid-cols-3 gap-2" id="slotGroup">
-<button class="slot-pill py-2 px-1 text-center rounded-lg border-2 border-primary bg-primary/10 text-primary font-label-md text-label-md font-semibold" onclick="selectSlot(this)" type="button">
-            10:30 AM
-          </button>
-<button class="slot-pill py-2 px-1 text-center rounded-lg border border-outline-variant/60 bg-surface-container-lowest text-on-surface font-label-md text-label-md" onclick="selectSlot(this)" type="button">
-            11:45 AM
-          </button>
-<button class="slot-pill py-2 px-1 text-center rounded-lg border border-outline-variant/60 bg-surface-container-lowest text-on-surface font-label-md text-label-md" onclick="selectSlot(this)" type="button">
-            02:15 PM
-          </button>
-<button class="slot-pill py-2 px-1 text-center rounded-lg border border-outline-variant/60 bg-surface-container-lowest text-on-surface font-label-md text-label-md" onclick="selectSlot(this)" type="button">
-            04:30 PM
-          </button>
-<button class="slot-pill py-2 px-1 text-center rounded-lg border border-outline-variant/60 bg-surface-container-lowest text-on-surface font-label-md text-label-md" onclick="selectSlot(this)" type="button">
-            06:00 PM
-          </button>
-<button class="py-2 px-1 text-center rounded-lg border border-outline-variant/30 bg-surface-container-low text-outline-variant font-label-md text-label-md cursor-not-allowed" type="button">
-            07:30 PM (Booked)
-          </button>
-</div>
-</div>
-<!-- WhatsApp Instant Confirm CTA -->
-<a class="w-full py-3.5 px-4 bg-primary text-on-primary font-label-lg text-label-lg font-semibold rounded-lg flex items-center justify-center gap-2 shadow-sm hover:bg-primary-container active:scale-[0.98] transition-all" href="https://wa.me/919876543210?text=Hi%20Aura%20Dental%20Arts,%20I%20would%20like%20to%20confirm%20an%20appointment%20for%20a%20checkup%20at%20Indiranagar.">
-<span class="material-symbols-outlined text-xl">send</span>
-        Confirm Slot via WhatsApp (1-Tap)
-      </a>
-<p class="font-label-sm text-label-sm text-center text-on-surface-variant flex items-center justify-center gap-1">
-<span class="material-symbols-outlined text-sm text-secondary">verified_user</span> Instant clinic confirmation, zero advance payment required.
-      </p>
+<button class="flex min-h-12 w-full items-center justify-center gap-2 rounded-xl bg-primary px-4 py-3 font-semibold text-on-primary" type="submit"><span class="material-symbols-outlined">chat</span>Continue on WhatsApp</button>
+<p class="text-center text-xs text-on-surface-variant">WhatsApp opens a message draft for you to review before sending.</p>
+</form>
 </section>
 <!-- Comprehensive Treatments & Transparent Pricing -->
 <section class="space-y-4" id="services">
@@ -1635,7 +1443,7 @@
 <section class="bg-surface-container-lowest rounded-xl border border-outline-variant/60 shadow-sm p-4 space-y-4" id="location-mobile">
 <div>
 <span class="font-label-sm text-label-sm font-semibold text-primary uppercase">Find Us</span>
-<h2 class="font-headline-md text-headline-md text-on-surface">Clinic Location &amp; Hours</h2>
+<h2 class="font-headline-md text-headline-md text-on-surface">Clinic Location &amp; Map</h2>
 </div>
 <div class="space-y-3">
 <div class="flex items-start gap-3">
@@ -1650,17 +1458,6 @@
 <p class="font-label-sm text-label-sm text-primary font-medium mt-1">
               Landmark: Opposite Starbucks, 350m from Indiranagar Metro Station (Purple Line)
             </p>
-</div>
-</div>
-<div class="flex items-start gap-3">
-<div class="p-2 bg-primary/10 rounded-lg text-primary flex-shrink-0 mt-0.5">
-<span class="material-symbols-outlined text-xl" data-icon="schedule">schedule</span>
-</div>
-<div>
-<p class="font-headline-sm text-headline-sm font-semibold text-on-surface">Consultation Timings</p>
-<p class="font-body-sm text-body-sm text-on-surface-variant">Mon – Sat: 09:30 AM – 08:30 PM</p>
-<p class="font-body-sm text-body-sm text-on-surface-variant">Sunday: 10:00 AM – 02:00 PM (By Appointment)</p>
-<p class="font-label-sm text-label-sm text-error font-medium mt-0.5">24/7 On-Call Emergency Dentist Available</p>
 </div>
 </div>
 </div>
@@ -1721,25 +1518,6 @@
       }
     }
 
-    function setBookingSelection(containerId, selector, button) {
-      const container = document.getElementById(containerId);
-      if (!container || !button) return;
-      container.querySelectorAll(selector).forEach((option) => {
-        option.classList.remove('is-selected');
-        option.setAttribute('aria-pressed', 'false');
-      });
-      button.classList.add('is-selected');
-      button.setAttribute('aria-pressed', 'true');
-    }
-    function selectPill(button) { setBookingSelection('treatmentPillGroup', '.treatment-pill', button); }
-    function selectDate(button) { setBookingSelection('datePillGroup', '.date-pill', button); }
-    function selectSlot(button) { setBookingSelection('slotGroup', '.slot-pill', button); }
-    [['treatmentPillGroup','.treatment-pill','.treatment-pill.bg-primary'],['datePillGroup','.date-pill','.date-pill.border-2'],['slotGroup','.slot-pill','.slot-pill.border-2']].forEach(([id,selector,initial])=>{
-      const group=document.getElementById(id); if(!group)return;
-      const active=group.querySelector(initial)||group.querySelector(selector);
-      group.querySelectorAll(selector).forEach((option)=>option.setAttribute('aria-pressed',String(option===active)));
-      active?.classList.add('is-selected');
-    });
   </script>
 
 </div>

@@ -12,7 +12,6 @@
     phone: value('phone', '098209 85271'),
     whatsapp: value('whatsapp', '+91 98209 85271'),
     emergency: value('emergency', '+91 80 4123 4567'),
-    hours: value('hours', customClinic ? 'Call clinic to confirm today’s hours' : 'Mon - Sat: 9:00 AM - 8:30 PM | Sun: By Appt'),
     rating: value('rating', customClinic ? '' : '4.9'),
     reviews: value('reviews', customClinic ? '317' : '1,450+'),
     experience: value('experience', '15'),
@@ -29,6 +28,10 @@
     ['100 Feet Rd, Indiranagar, Bengaluru', `${data.area}, ${data.city}`],
     ['Aura Dental Arts & Implant Centre', data.clinic],
     ['Aura Dental Arts', data.clinic],
+    ['SMILE-N-STYLE', data.clinic],
+    ['KURLA WEST', data.area.toUpperCase()],
+    ['Kurla West', data.area], ['Mumbai', data.city],
+    ['317 Google reviews', `${formattedReviews} Google reviews`],
     ['Indiranagar 100ft Rd, BLR', `${data.area} · ${data.city}`],
     ['Dr. Aarav Mehta', data.doctor], ['Dr. Mehta', data.doctor],
     ['Dr. Aarav Mehta (BDS, MDS) • 15+ Yrs', data.doctor],
@@ -50,17 +53,11 @@
     ['10,000 successful', `${data.patients.replace(/\+$/, '')} successful`],
     ['Bangalore', data.city],
     ['BDS, MDS (Prosthodontics & Implantology)', data.qualification],
-    ['Mon - Sat: 9:00 AM - 8:30 PM | Sun: By Appt', data.hours],
-    ['Monday – Saturday: 9:00 AM – 8:30 PM', customClinic ? data.hours : 'Monday – Saturday: 9:00 AM – 8:30 PM'],
-    ['Mon – Sat: 09:30 AM – 08:30 PM', customClinic ? data.hours : 'Mon – Sat: 09:30 AM – 08:30 PM'],
-    ['Sunday: 10:00 AM – 2:00 PM (Emergency & Pre-booked Implants only)', customClinic ? data.hours : 'Sunday: 10:00 AM – 2:00 PM (Emergency & Pre-booked Implants only)'],
-    ['Sunday: 10:00 AM – 02:00 PM (By Appointment)', customClinic ? data.hours : 'Sunday: 10:00 AM – 02:00 PM (By Appointment)'],
     ['Clinic Open Now', customClinic ? 'Call to confirm opening' : 'Clinic Open Now'],
     ['Walk-ins welcomed till 8:00 PM', customClinic ? 'Contact clinic to confirm availability' : 'Walk-ins welcomed till 8:00 PM'],
     ['Premier boutique dental practice led by Dr. Aarav Mehta (MDS Prosthodontics & Implantology). Delivering painless, microscopy-enhanced dental excellence in Indiranagar, Bengaluru.', `${data.clinic} in ${data.area}, ${data.city}. Contact the clinic to learn more about available dental care.`],
-    ['Select your dental concern, pick a preferred time, and receive instant confirmation with digital token directly on WhatsApp.', 'Choose a concern and preferred time, then contact the clinic on WhatsApp to confirm availability.'],
     ['Instant Clinic Availability', 'Appointment Request'], ['INSTANT TOKEN RESERVATION', 'REQUEST AN APPOINTMENT'],
-    ['Live Availability', 'Choose a preferred time'], ['Available Slots (Dr. Mehta)', 'Preferred Time'],
+    ['Live Availability', 'Choose a service'], ['Available Slots (Dr. Mehta)', 'Preferred Service'],
     ['Zero Wait Time', 'Clinic will confirm'], ['Confirm Slot via WhatsApp', 'Continue on WhatsApp']
   ];
 
@@ -138,22 +135,16 @@
     image.replaceWith(map);
   });
 
-  const today = new Date();
-  document.querySelectorAll('#datePillGroup .date-pill').forEach((button, index) => {
-    const date = new Date(today);
-    date.setDate(today.getDate() + index);
-    const labels = button.querySelectorAll('span');
-    if (labels[0]) labels[0].textContent = index === 0 ? 'TODAY' : date.toLocaleDateString(undefined, { weekday: 'short' }).toUpperCase();
-    if (labels[1]) labels[1].textContent = date.toLocaleDateString(undefined, { day: '2-digit' });
-    if (labels[2]) labels[2].textContent = date.toLocaleDateString(undefined, { month: 'short' });
+  // Open a patient-reviewed WhatsApp draft with only the name and chosen service.
+  document.querySelectorAll('#desktop-booking-form, #mobile-booking-form').forEach((form) => {
+    form.addEventListener('submit', (event) => {
+      event.preventDefault();
+      const patientName = form.elements.patientName.value.trim().slice(0, 80);
+      const service = form.elements.service.value.trim().slice(0, 100);
+      const message = `Hello ${data.clinic}, my name is ${patientName}. I would like to book an appointment for ${service}. Please let me know the available appointment options.`;
+      window.open(`https://wa.me/${digits(data.whatsapp)}?text=${encodeURIComponent(message)}`, '_blank', 'noopener');
+    });
   });
-
-  // Booking buttons open a generic draft for the patient to review and send.
-  document.querySelectorAll('#desktop-site form').forEach((form) => {
-    form.removeAttribute('onsubmit');
-    form.addEventListener('submit', (event) => { event.preventDefault(); window.open(whatsappUrl, '_blank', 'noopener'); });
-  });
-  document.querySelectorAll('#mobile-site #booking > a[href*="wa.me"]').forEach((link) => { link.href = whatsappUrl; });
 
   const bottomNav = document.getElementById('mobile-bottom-nav');
   if (bottomNav) {
